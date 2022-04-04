@@ -6,6 +6,6 @@ class Pages
     }
     public function index()
     {
-        echo "jawad";
+        echo "imad";
     }
 }
