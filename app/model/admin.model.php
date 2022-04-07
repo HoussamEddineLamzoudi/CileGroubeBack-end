@@ -13,7 +13,7 @@ class admin
     public function getAdminByEmail($email)
     {
 
-        $this->db->query("SELECT * from users WHERE email=:email");
+        $this->db->query("SELECT * from admin WHERE email=:email");
         $this->db->bind(":email", $email);
         $this->db->execute();
         if ($this->db->rowCount()) return true;
@@ -23,7 +23,7 @@ class admin
     public function login($email, $psw)
     {
 
-        $this->db->query("SELECT * FROM users WHERE email=:email");
+        $this->db->query("SELECT * FROM admin WHERE email=:email");
         $this->db->bind(":email", $email);
 
         $row = $this->db->fetch();

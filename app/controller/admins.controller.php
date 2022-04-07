@@ -1,8 +1,5 @@
 <?php
 
-
-// header ('Content-Type: application/json');
-
 class admins extends controller
 {
 
@@ -52,24 +49,14 @@ class admins extends controller
                     $data['password_err'] = 'Mot de passe incorrect';
                     $retourAdmin['login'] = 'error Login';
                     echo json_encode($retourAdmin);
-                    // $this->view('users/login', $data);  
                 }
             } else {
 
                 $retourAdmin['login'] = 'error Login';
                 echo json_encode($retourAdmin);
-                
             }
         } else {
 
-            // $data = [
-
-            //     'email' => '',
-            //     'psw' => '',
-            //     'email_err' => '',
-            //     'psw_err' => ''
-            // ];
-            
             // 0; Not loged yet 
             $retourAdmin['login'] = '0';
             echo json_encode($retourAdmin);
