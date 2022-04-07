@@ -17,12 +17,12 @@ class admins extends controller
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-
+            $info =json_decode(file_get_contents("php://input"));
 
             $data = [
 
-                'email' => $_POST['adminEmail'],
-                'psw' => $_POST['adminPassword'],
+                'email' => $info->adminEmail,
+                'psw' => $info->adminPassword,
                 'email_err' => '',
                 'psw_err' => ''
             ];

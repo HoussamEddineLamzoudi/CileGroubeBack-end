@@ -16,15 +16,16 @@ class clients extends controller
         header('Acces-Control-Allow-Headers: Acces-Control-Allow-Methods,Content-Type,Acces-Control-Allow-Headers,Authorization,X-Requested-With');
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
+            $info =json_decode(file_get_contents("php://input"));
 
-            $key = $this->getKey($_POST['first_name'], $_POST['last_name']);
+            $key = $this->getKey($info->first_name, $info->last_name);
 
             $data = [
 
-                'first_name' => $_POST['first_name'],
-                'last_name' => $_POST['last_name'],
-                'age' => $_POST['age'],
-                'profession' => $_POST['profession'],
+                'first_name' => $info->first_name,
+                'last_name' => $info->last_name,
+                'age' => $info->age,
+                'profession' => $info->profession,
                 'key' => $key
             ];
 
@@ -39,7 +40,7 @@ class clients extends controller
             }
         } else {
 
-            $retourClient["seccess"] = true;
+            $retourClient["seccess"] = false;
             echo json_encode($retourClient);
         }
     }
