@@ -1,0 +1,8 @@
+{
+    "name": "emadou/cile-groube-back-end",
+    "type": "project",
+    "license": "MIT",
+    "require": {
+        "vlucas/phpdotenv": "^5.4"
+    }
+}

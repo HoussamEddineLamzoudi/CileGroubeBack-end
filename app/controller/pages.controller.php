@@ -1,11 +1,7 @@
 <?php
-class Pages
+class pages
 {
-    public function __construct()
-    {
-    }
-    public function index()
-    {
-        // echo "imad";
-    }
+  public function index()
+  {
+  }
 }
