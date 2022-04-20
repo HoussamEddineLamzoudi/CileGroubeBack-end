@@ -7,10 +7,9 @@ class crenaus extends controller
     $this->model = $this->model('crenau');
   }
 
-  public function get_crenaus($params = [])
+  public function get_crenaus($day)
   {
-    if (empty($params)) die('no day provided !');
-    $day = $params;
+    if (empty($day)) die('no day provided !');
     $taken = $this->model->fetch_taken($day);
     $all = $this->model->fetch_all();
     $available = array();
