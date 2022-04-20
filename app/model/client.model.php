@@ -1,5 +1,4 @@
 <?php
-
 class client
 {
   private $db;
@@ -51,7 +50,7 @@ class client
 
   function update(string $column, string $value, string $id)
   {
-    $query = "update table Clients set " . $column . " = :value where id = :id";
+    $query = "update Clients set " . $column . " = :value where id = :id";
     $params = array('value' => $value, 'id' => $id);
     $this->db->query($query);
     $this->db->execute($params);
