@@ -9,36 +9,27 @@ class clients extends controller
 
   public function addClient()
   {
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-      $info = json_decode(file_get_contents("php://input"));
-
-      $key = $this->getKey($info->first_name, $info->last_name);
-
-      $data = [
-        'first_name' => $info->first_name,
-        'last_name' => $info->last_name,
-        'age' => $info->age,
-        'profession' => $info->profession,
-        'key' => $key
-      ];
-
-      $client = $this->clientModel->add_client($data);
-      if ($client) {
-        $retourClient["seccess"] = true;
-        $retourClient['key'] = $key;
-        echo json_encode($retourClient);
-        $_SESSION['ref'] = $key;
-      } else {
-        die("add_err");
-      }
-    } else {
-      $retourClient["seccess"] = false;
+    $info = json_decode(file_get_contents("php://input"));
+    $key = $this->getKey($info->first_name, $info->last_name);
+    $data = [
+      'first_name' => $info->first_name,
+      'last_name' => $info->last_name,
+      'age' => $info->age,
+      'profession' => $info->profession,
+      'ref' => $key
+    ];
+    $client = $this->clientModel->add_client($data);
+    if ($client) {
+      $retourClient["seccess"] = true;
+      $retourClient['key'] = $key;
       echo json_encode($retourClient);
+      $_SESSION['ref'] = $key;
+    } else {
+      die("add_err");
     }
   }
 
-  public function getKey($fName, $lName)
+  private function getKey($fName, $lName)
   {
     $arr1 = str_split($fName);
     $arr2 = str_split($lName);

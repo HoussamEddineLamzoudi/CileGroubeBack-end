@@ -28,27 +28,25 @@ class core
     }
 
     $this->param = array_slice($url, 2);
-
     call_user_func_array([$this->controller, $this->method], $this->param);
   }
 
 
   public function getUrl()
   {
-
     if (isset($_GET['url'])) {
       $url = $_GET['url'];
       $url = filter_var($url, FILTER_SANITIZE_URL);
       $url = rtrim($url, '/');
       $url = explode('/', $url);
-
-      return $url;
+      unset($url[0]);
     } else {
       $url = $_SERVER['REQUEST_URI'];
       $url = filter_var($url, FILTER_SANITIZE_URL);
       $url = trim($url, '/');
       $url = explode('/', $url);
-      return $url;
+      unset($url[0]);
     }
+    return array_values($url);
   }
 }

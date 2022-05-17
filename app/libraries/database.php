@@ -2,12 +2,10 @@
 
 class database
 {
-
   private $host = db_host;
   private $user = db_user;
   private $psw = db_psw;
   private $dbName = db_name;
-
   private $conn;
   private $stmt;
 
